@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating'
+import { FlowRouter } from 'meteor/kadira:flow-router'
 
 // button for animation during signin w/ server
 var submitBtn
@@ -42,14 +43,14 @@ Template.signin.events({
     Meteor.loginWithPassword(email, password, function (err) {
       submitBtn.stop()
       if (err) {
-        Bert.alert({ message: err.reason, type: 'danger' })
+        var msg = err.reason;
+        if (err.error == 403) msg = 'Failed to sign in. Did you forget your password?';
+        Bert.alert({ message: msg, type: 'danger' })
         return
       }
       //Bert.alert({ message: Meteor.user().email + ' signed in.', type: 'success' })
       var path = Session.get('redirectAfterSignin')
-console.log('get redirectAfterSignin', path)
       var current = FlowRouter.current().path
-console.log('current', current)
       if (path == undefined || path == current) path = 'home'
       FlowRouter.go(path)
     })
