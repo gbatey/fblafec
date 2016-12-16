@@ -93,3 +93,4 @@ See the [github project](https://github.com/mixmaxhq/meteor-smart-disconnect).
 * Avatar customization (gravatar/file upload/avatar designer?)
 * Add user messaging, chat, and associated notifications
 * Other things hiding in the AdminLTE examples that might apply to *any* 'web-app'
+* Add unit tests
