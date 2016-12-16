@@ -1,0 +1,43 @@
+<template name="signin">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="{{pathFor 'home'}}"><b>App</b>Title</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form id='sign-in'>
+        <div class="form-group has-feedback">
+          <input type="text" name="email" class="form-control required" placeholder="Email" autofocus>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" name="password" class="form-control required" placeholder="Password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+<!--
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="rememberMe"> Remember me
+              </label>
+            </div>
+-->
+          </div>
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="ladda-button btn btn-primary btn-block" data-style="slide-left"><span class="ladda-label">Sign In</span></button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <a href="{{pathFor 'register'}}" class="text-center">Register a new membership</a>
+
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+
+</template>

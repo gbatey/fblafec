@@ -1,0 +1,15 @@
+th > small {
+  font-size: x-small;
+}
+
+.online-ind {
+  font-size: 11px;
+}
+
+.online-ind > .online {
+  color: #00a65a; /* green */
+}
+
+.online-ind > .offline {
+  color: #f0ad4e; /* orange */
+}

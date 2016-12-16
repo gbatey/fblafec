@@ -1,0 +1,42 @@
+<template name="navbarUser">
+  <li class="dropdown user user-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      <img src="{{thumbnailPhoto}}" class="user-image" alt="User Image">
+      <span class="hidden-xs">{{currentUser.profile.displayName}}</span>
+    </a>
+    <ul class="dropdown-menu">
+      <!-- User image -->
+      <li class="user-header">
+        <img src="{{thumbnailPhoto}}" class="img-circle" alt="User Image">
+        <p>
+          {{currentUser.profile.givenName}} {{currentUser.profile.sn}}
+          <small>{{currentUser.profile.title}}</small>
+        </p>
+      </li>
+      <!-- Menu Body -->
+      <li class="user-body">
+        <div class="row">
+          <div class="col-xs-4 text-center">
+            <a href="#">Followers</a>
+          </div>
+          <div class="col-xs-4 text-center">
+            <a href="#">Sales</a>
+          </div>
+          <div class="col-xs-4 text-center">
+            <a href="#">Friends</a>
+          </div>
+        </div>
+        <!-- /.row -->
+      </li>
+      <!-- Menu Footer-->
+      <li class="user-footer">
+        <div class="pull-left">
+          <a href="{{pathFor 'profile'}}/{{currentUser.username}}" class="btn btn-default">Profile</a>
+        </div>
+        <div class="pull-right">
+          <a id="signout" href="#" class="btn btn-default">Sign out</a>
+        </div>
+      </li>
+    </ul>
+  </li>
+</template>

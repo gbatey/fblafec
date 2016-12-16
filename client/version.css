@@ -1,0 +1,5 @@
+#version .popover-content {
+  white-space: nowrap;
+  font-size: smaller;
+  padding: 4px 8px;
+}

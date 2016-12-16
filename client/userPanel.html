@@ -1,0 +1,11 @@
+<template name="userPanel">
+  <div class="user-panel">
+    <div class="pull-left image">
+      <img src="{{thumbnailPhoto}}" class="img-circle" alt="User Image">
+    </div>
+    <div class="pull-left info">
+      <p>{{currentUser.profile.displayName}}</p>
+      <a href="#" id="onlineToggle"><i class="fa fa-circle {{onlineStatus}}"></i> {{#if isOnline}}Online{{else}}Offline{{/if}}</a>
+    </div>
+  </div>
+</template>

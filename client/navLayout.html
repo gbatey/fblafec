@@ -1,0 +1,64 @@
+<template name="navLayout">
+  {{> meteorStatus}}
+  {{#AdminLTE}}
+    {{> navLayout_header}}
+    {{> navLayout_sidebar}}
+    <div class="content-wrapper">
+      {{> Template.dynamic template=main}}
+    </div>
+    {{> navLayout_footer}}
+  {{/AdminLTE}}
+</template>
+
+<template name="navLayout_header">
+  <header class="main-header">
+    <a href="{{pathFor 'home'}}" class="logo">
+      <span class="logo-mini">
+        <b>App</b>Title
+      </span>
+      <span class="logo-lg">
+        <b>App</b>Title
+      </span>
+    </a>
+    {{> navLayout_navbar}}
+  </header>
+</template>
+
+<template name="navLayout_sidebar">
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      {{#if currentUser}}
+        {{> userPanel}}
+      {{/if}}
+      {{> searchForm}}
+      {{> sidebarMenu}}
+    </section>
+  </aside>
+</template>
+
+<template name="navLayout_navbar">
+  <nav class="navbar navbar-static-top" role="navigation">
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        {{#unless currentUser}}
+          {{> signinLink}}
+        {{else}}
+          {{> navbarNotify }}
+          {{> navbarUser}}
+        {{/unless}}
+      </ul>
+    </div>
+  </nav>
+</template>
+
+<template name="navLayout_footer">
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      {{> version}}
+    </div>
+    <em>Copyright message goes here</em>
+  </footer>
+</template>

@@ -1,0 +1,17 @@
+/* fixes background color */
+body.login-page .skin-blue .wrapper {
+  background-color: transparent
+}
+
+/* fixes icons on input fields*/
+body.login-page .has-feedback label ~ .form-control-feedback {
+  top: 0
+}
+
+.login-footer {
+  padding-top: 10px
+}
+
+.login-footer img {
+  height: 30px
+}
