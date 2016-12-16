@@ -2,15 +2,18 @@ Meteor AdminLTE Skeleton
 ========================
 This project is a skeleton implementaton of a meteor application that uses [Almsaeed Studio''s AdminLTE](https://almsaeedstudio.com/themes/AdminLTE/index.html).
 
-It is meant to provide a starting point web applications. It provides basic navigation layout with sign-up/sign-in buttons and forms. It uses Flow-Router and Blaze-Layout as core client side techniques.
+It is meant to provide a starting point web applications. The skeleton provides basic navigation with sign-up/sign-in buttons and forms.
+
+Following recommendations found in the Meteor documention, it is built on [Flow Router](https://github.com/kadirahq/flow-router) and [Blaze Layout](https://github.com/kadirahq/blaze-layout), and has removed the [autopublish](https://atmospherejs.com/meteor/autopublish) and [insecure](https://atmospherejs.com/meteor/insecure) packages.
 
 ## Usage
 
 To start a new project using this repository:
 
-    git clone pbatey/meteor-adminlte-skeleton project-name
+    git clone https://github.com/pbatey/meteor-adminlte-skeleton project-name
     cd project-name
     git remote remove origin
+    meteor npm install
     meteor
 
 Then navigate to `http://localhost:3000`. Make changes and push them to your own repository. See [GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) for details.
@@ -77,6 +80,11 @@ See the [github project](https://github.com/mixmaxhq/meteor-smart-disconnect).
 
 **255kb:meteor-status**
 : Alerts the client if the server connection is lost. See the [github project](https://github.com/255kb/meteor-status).
+
+## NPM Packages
+
+**moment**
+: Timestamp formatter. See the [api docs](http://momentjs.com/docs/) for details.
 
 ## TODO
 
