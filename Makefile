@@ -25,6 +25,6 @@ $(APP)/lib/git-version.js :
 	@echo "  long: '$(GIT_LONG)'," >> $@
 	@echo "  branch: '$(GIT_BRANCH)'," >> $@
 	@echo "  tag: '$(GIT_TAG)'," >> $@
-	@echo "  dirty: '$(GIT_DIRTY)'," >> $@
+	@echo "  dirty: $(GIT_DIRTY)," >> $@
 	@echo "  date: '$(DATE)'," >> $@
 	@echo "};" >> $@
