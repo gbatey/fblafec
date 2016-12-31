@@ -35,3 +35,6 @@ mizzao:user-status
 semantic:ui-checkbox
 session
 255kb:meteor-status
+fullcalendar:fullcalendar
+aldeed:simple-schema
+aldeed:collection2

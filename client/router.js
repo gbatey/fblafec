@@ -77,3 +77,10 @@ FlowRouter.route('/not-found', {
     BlazeLayout.render('navLayout', { main: 'notFound' })
   }
 })
+
+FlowRouter.route('/events', {
+  name: 'events',
+  action(params, queryParams) {
+    BlazeLayout.render('navLayout', { main: 'events' })
+  }
+})
