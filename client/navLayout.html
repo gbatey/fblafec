@@ -27,10 +27,6 @@
 <template name="navLayout_sidebar">
   <aside class="main-sidebar">
     <section class="sidebar">
-      {{#if currentUser}}
-        {{> userPanel}}
-      {{/if}}
-      {{> searchForm}}
       {{> sidebarMenu}}
     </section>
   </aside>
@@ -46,7 +42,6 @@
         {{#unless currentUser}}
           {{> signinLink}}
         {{else}}
-          {{> navbarNotify }}
           {{> navbarUser}}
         {{/unless}}
       </ul>

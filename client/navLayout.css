@@ -2,3 +2,7 @@
   height: 18px;
   padding-right: 19px;
 }
+
+body > div > .wrapper {
+  overflow: visible!important;
+}

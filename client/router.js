@@ -17,7 +17,7 @@ AccountsTemplates.configureRoute('signIn', {
 });
 
 // uncomment to ensure sign-in for ALL routes
-//FlowRouter.triggers.enter([AccountsTemplates.ensureSignedIn]);
+FlowRouter.triggers.enter([AccountsTemplates.ensureSignedIn]);
 
 FlowRouter.notFound = {
   action: function () {
@@ -82,5 +82,33 @@ FlowRouter.route('/events', {
   name: 'events',
   action(params, queryParams) {
     BlazeLayout.render('navLayout', { main: 'events' })
+  }
+})
+
+FlowRouter.route('/roster', {
+  name: 'roster',
+  action(params, queryParams) {
+    BlazeLayout.render('navLayout', { main: 'roster' })
+  }
+})
+
+FlowRouter.route('/attendance', {
+  name: 'attendance',
+  action(params, queryParams) {
+    BlazeLayout.render('navLayout', { main: 'attendance' })
+  }
+})
+
+FlowRouter.route('/scanner', {
+  name: 'scanner',
+  action(params, queryParams) {
+    BlazeLayout.render('navLayout', { main: 'scanner' })
+  }
+})
+
+FlowRouter.route('/addEmployeeForm', {
+  name: 'addEmployeeForm',
+  action(params, queryParams) {
+    BlazeLayout.render('navLayout', { main: 'addEmployeeForm' })
   }
 })
