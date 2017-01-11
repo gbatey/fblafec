@@ -8,7 +8,7 @@
 
             <div class="box-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
-                <a name="add-employee" type="button" class="btn btn-success btn-sm pull-right">Add</a>
+                <a id="add-employee" type="button" class="btn btn-success btn-sm pull-right">Add</a>
               </div>
             </div>
           </div>
@@ -17,40 +17,15 @@
             <table class="table table-hover">
               <tbody>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
                   <th>Begin Date</th>
+                  <th>Name</th>
                   <th>Phone</th>
                   <th>Email</th>
+                  <th></th>
                 </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>(303) 555-1655</td>
-                  <td>jdoe1234@aol.com</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td>(303) 555-1655</td>
-                  <td>jdoe1234@aol.com</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td>(303) 555-1655</td>
-                  <td>jdoe1234@aol.com</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td>(303) 555-1655</td>
-                  <td>jdoe1234@aol.com</td>
-                </tr>
+                {{#each employees}}
+                  {{> rosterItem}}
+                {{/each}}
               </tbody>
             </table>
           </div>
@@ -60,4 +35,17 @@
       </div>
     </div>
   </section>
+</template>
+
+<template name="rosterItem">
+  <tr>
+    <td>{{beginDate}}</td>
+    <td>{{fullName}}</td>
+    <td>{{phone}}</td>
+    <td>{{email}}</td>
+      <td style="text-align:right">
+        <a id="edit-employee"><i class="fa fa-pencil fa-lg"></i></a>
+        <a id="delete-employee"><i class="fa fa-trash fa-lg"></i></a>
+      </td>
+  </tr>
 </template>

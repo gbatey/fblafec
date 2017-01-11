@@ -1,19 +1,19 @@
-Meteor.publish('events', function() {
-  return Events.find();
+Meteor.publish('employees', function() {
+  return Employees.find();
 });
 
 Meteor.methods({
-  addEvent( event ) {
-    check( event, Events.schema );
+  addEmployee( employee ) {
+    check( employee, Employees.schema);
 
     try {
-      return Events.insert( event );
+      return Employees.insert( employee );
     } catch ( exception ) {
       throw new Meteor.Error( '500', `${ exception }` );
     }
   },
-  editEvent( event ) {
-    check( event, {
+  editEmployee( employee ) {``
+    check( employee, {
       _id: String,
       title: Match.Optional( String ),
       start: String,
@@ -23,18 +23,18 @@ Meteor.methods({
     });
 
     try {
-      return Events.update( event._id, {
-        $set: event
+      return Employees.update( employee._id, {
+        $set: employee
       });
     } catch ( exception ) {
       throw new Meteor.Error( '500', `${ exception }` );
     }
   },
-  removeEvent( event ) {
-    check( event, String );
+  removeEmployee( employee ) {
+    check( employee, String );
 
     try {
-      return Events.remove( event );
+      return Employees.remove( employee );
     } catch ( exception ) {
       throw new Meteor.Error( '500', `${ exception }` );
     }
