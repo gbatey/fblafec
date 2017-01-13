@@ -43,3 +43,13 @@ Meteor.startup(function() {
     }
   }
 });
+
+Meteor.methods({
+  updateAttendance(id, value) {
+    try {
+      return Attendance.update({_id: id}, { $set: { value: value }});
+    } catch ( exception ) {
+      throw new Meteor.Error( '500', `${ exception }` );
+    }
+  }
+});

@@ -20,8 +20,8 @@ AccountsTemplates.configureRoute('signIn', {
     }
 });
 
-// uncomment to ensure sign-in for ALL routes
-FlowRouter.triggers.enter([AccountsTemplates.ensureSignedIn]);
+// uncomment to ensure sign-in for ALL routes except 'register'
+FlowRouter.triggers.enter([AccountsTemplates.ensureSignedIn], {except: ["register"]});
 
 FlowRouter.notFound = {
     action: function() {

@@ -11,33 +11,27 @@
           <div class="form-group">
             <div class="row">
               <div class="col-xs-12 col-sm-4">
-                <label for="type">Event Type</label>
+                <label for="type">Job Type</label>
                 <select name="type" class="form-control">
-                  <option selected="{{selected event.type 'Birthday' }}" value="Birthday">Birthday</option>
-                  <option selected="{{selected event.type 'Corporate' }}" value="Corporate">Corporate</option>
-                  <option selected="{{selected event.type 'Miscellaneous' }}" value="Miscellaneous">Miscellaneous</option>
-                  <option selected="{{selected event.type 'Wedding' }}" value="Wedding">Wedding</option>
+                  <option selected="{{selected event.type 'Swab the Deck' }}" value="Swab the Deck">Swab the Deck</option>
+                  <option selected="{{selected event.type 'Batten Down Hatches' }}" value="Batten Down Hatches">Batten Down Hatches</option>
+                  <option selected="{{selected event.type 'Trim the Sails' }}" value="Trim the Sails">Trim the Sails</option>
+                  <option selected="{{selected event.type 'Bury Me Treasure' }}" value="Bury Me Treasure">Bury Me Treasure</option>
                 </select>
               </div>
               <div class="col-xs-12 col-sm-3">
-                <label for="start">Event Starts</label>
+                <label for="start">Shift Starts</label>
                 <input disabled type="text" name="start" class="form-control" value="{{event.start}}">
               </div>
               <div class="col-xs-12 col-sm-3">
-                <label for="end">Event End</label>
+                <label for="end">Shift End</label>
                 <input disabled type="text" name="end" class="form-control" value="{{#if event.end}}{{event.end}}{{else}}{{event.start}}{{/if}}">
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="title">Event Title</label>
+            <label for="title">Employee</label>
             <input type="text" name="title" class="form-control" value="{{event.title}}">
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-4">
-              <label for="guests">Number of Guests</label>
-              <input type="text" name="guests" class="form-control" value="{{event.guests}}">
-            </div>
           </div>
         </div>
         <div class="modal-footer">

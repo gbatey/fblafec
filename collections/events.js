@@ -28,12 +28,7 @@ Events.schema = new SimpleSchema({
   'type': {
     type: String,
     label: 'What type of event is this?',
-    allowedValues: [ 'Birthday', 'Corporate', 'Wedding', 'Miscellaneous' ]
   },
-  'guests': {
-    type: Number,
-    label: 'The number of guests expected at this event.'
-  }
 });
 
 Events.attachSchema( Events.schema );
