@@ -2,6 +2,10 @@ let closeForm = () => {
     history.back();
 };
 
+Template.addEditEmployeeForm.onCreated(() => {
+   Template.instance().subscribe("employees");
+});
+
 Template.addEditEmployeeForm.helpers({
     formType(type) {
         let employeeForm = Session.get('employeeForm');
@@ -24,9 +28,12 @@ Template.addEditEmployeeForm.helpers({
     },
     employee() {
         let employeeForm = Session.get('employeeForm');
+console.log(employeeForm);
 
         if (employeeForm) {
-            return employeeForm.type === 'edit' ? Employees.findOne(employeeForm.empid) : {};
+            var data = Employees.findOne(employeeForm.employeeId)
+if (data) console.log(data)
+return data
         }
     }
 });
@@ -61,14 +68,14 @@ Template.addEditEmployeeForm.events({
             };
         console.log(employeeItem);
         if (submitType === 'editEmployee') {
-            employeeItem._id = employeeForm.employee;
+            employeeItem._id = employeeForm.employeeId;
         }
 
         Meteor.call(submitType, employeeItem, (error) => {
             if (error) {
                 Bert.alert(error.reason, 'danger');
             } else {
-                Bert.alert(`Employee ${ `employeeForm`.type }ed!`, 'success');
+                Bert.alert(`Employee ${ employeeForm.type }ed!`, 'success');
                 closeForm();
             }
         });

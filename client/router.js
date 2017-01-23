@@ -149,7 +149,7 @@ FlowRouter.route('/edit-employee/:slug', {
     action(params, queryParams) {
         Session.set('employeeForm', {
             type: 'edit',
-            employee: FlowRouter.getParam("slug"),
+            employeeId: FlowRouter.getParam("slug"),
         });
         BlazeLayout.render('navLayout', {
             main: 'addEditEmployeeForm'

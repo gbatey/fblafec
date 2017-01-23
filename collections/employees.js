@@ -13,6 +13,10 @@ Employees.deny({
 });
 
 Employees.schema = new SimpleSchema({
+  _id: {
+    type: String,
+    optional: true
+  },
   'fullName': {
     type: String,
     label: 'The full name of the employee.'

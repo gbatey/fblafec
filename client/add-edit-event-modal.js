@@ -3,6 +3,10 @@ let closeModal = () => {
   $( '.modal-backdrop' ).fadeOut();
 };
 
+Template.addEditEventModal.onCreated( function () {
+  this.subscribe('employees');
+})
+
 Template.addEditEventModal.helpers({
   modalType( type ) {
     let eventModal = Session.get( 'eventModal' );
@@ -63,15 +67,25 @@ Template.addEditEventModal.events({
   },
   'click .delete-event' ( event, template ) {
     let eventModal = Session.get( 'eventModal' );
-    if ( confirm( 'Are you sure? This is permanent.' ) ) {
-      Meteor.call( 'removeEvent', eventModal.event, ( error ) => {
+    var eventId = eventModal.event;
+    sweetAlert({
+      title: "Are you sure?",
+      text: "You will not be able to recover this work shift!",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: true,
+      html: false
+    }, function() {
+      Meteor.call( 'removeEvent', eventId, ( error ) => {
         if ( error ) {
           Bert.alert( error.reason, 'danger' );
         } else {
-          Bert.alert( 'Event deleted!', 'success' );
+          Bert.alert( 'Work shift deleted!', 'success' );
           closeModal();
         }
       });
-    }
+    });
   }
 });

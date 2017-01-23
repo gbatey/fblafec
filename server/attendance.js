@@ -2,6 +2,16 @@ Meteor.publish("attendance", function() {
   return Attendance.find();
 });
 
+Meteor.methods({
+  updateAttendance(id, value) {
+    try {
+      return Attendance.update({_id: id}, { $set: { value: value }});
+    } catch ( exception ) {
+      throw new Meteor.Error( '500', `${ exception }` );
+    }
+  }
+});
+
 Meteor.startup(function() {
   if (typeof Attendance.findOne() === 'undefined') {
     // make fake data for Attendance Chart
@@ -40,16 +50,6 @@ Meteor.startup(function() {
         hour: h
       }
       Attendance.insert(newEntry);
-    }
-  }
-});
-
-Meteor.methods({
-  updateAttendance(id, value) {
-    try {
-      return Attendance.update({_id: id}, { $set: { value: value }});
-    } catch ( exception ) {
-      throw new Meteor.Error( '500', `${ exception }` );
     }
   }
 });

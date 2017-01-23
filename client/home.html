@@ -1,3 +1,26 @@
 <template name="home">
+
+  <section class="content" style="min-height:1024px">
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Employee Roster</h3>
+        <p>View and update employee contacts.</p>
+        <a href="{{pathFor 'roster'}}" class="btn btn-lg btn-info btn-outline">Employees</a>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Work Schedule</h3>
+        <p>View and update the shift calendar.</p>
+        <a href="{{pathFor 'roster'}}" class="btn btn-lg btn-warning btn-outline">Schedule</a>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Daily Attendance</h3>
+        <p>View and update guest attendance.</p>
+        <a href="{{pathFor 'roster'}}" class="btn btn-lg btn-danger btn-outline">Attendance</a>
+      </div>
+    </div>
+  </section>
   
 </template>

@@ -13,9 +13,14 @@ Events.deny({
 });
 
 Events.schema = new SimpleSchema({
+  _id: {
+    type: String,
+    optional: true
+  },
   'title': {
     type: String,
-    label: 'The title of this event.'
+    label: 'The title of this event.',
+    optional: true
   },
   'start': {
     type: String,
