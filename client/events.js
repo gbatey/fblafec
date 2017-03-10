@@ -1,4 +1,5 @@
 import moment from "moment"
+//import "../collections/events.js"
 
 Template.events.onCreated(() => {
   let template = Template.instance();

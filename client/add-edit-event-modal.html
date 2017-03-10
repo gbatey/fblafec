@@ -31,7 +31,10 @@
           </div>
           <div class="form-group">
             <label for="title">Employee</label>
-            <input type="text" name="title" class="form-control" value="{{event.title}}">
+            <div>
+              <input class="form-control typeahead" name="title" type="text" placeholder="Employee Name"
+                  autocomplete="off" spellcheck="off" data-source="emp" value="{{event.title}}"/>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

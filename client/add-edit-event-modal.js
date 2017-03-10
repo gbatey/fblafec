@@ -1,37 +1,46 @@
-let closeModal = () => {
-  $( '#add-edit-event-modal' ).modal( 'hide' );
-  $( '.modal-backdrop' ).fadeOut();
-};
+//import "../collections/employees.js"
 
-Template.addEditEventModal.onCreated( function () {
+let closeModal = () => {
+  $('#add-edit-event-modal').modal('hide');
+  $('.modal-backdrop').fadeOut();
+};
+Template.addEditEventModal.onRendered(function() {
+  Meteor.typeahead.inject();
+});
+Template.addEditEventModal.onCreated(function() {
   this.subscribe('employees');
 })
 
 Template.addEditEventModal.helpers({
-  modalType( type ) {
-    let eventModal = Session.get( 'eventModal' );
-    if ( eventModal ) {
+  emp: function() {
+    return Employees.find().fetch().map(function(it) {
+      return it.fullName;
+    });
+  },
+  modalType(type) {
+    let eventModal = Session.get('eventModal');
+    if (eventModal) {
       return eventModal.type === type;
     }
   },
   modalLabel() {
-    let eventModal = Session.get( 'eventModal' );
+    let eventModal = Session.get('eventModal');
 
-    if ( eventModal ) {
+    if (eventModal) {
       return {
         button: eventModal.type === 'edit' ? 'Edit' : 'Add',
         label: eventModal.type === 'edit' ? 'Edit' : 'Add an'
       };
     }
   },
-  selected( v1, v2 ) {
+  selected(v1, v2) {
     return v1 === v2;
   },
   event() {
-    let eventModal = Session.get( 'eventModal' );
+    let eventModal = Session.get('eventModal');
 
-    if ( eventModal ) {
-      return eventModal.type === 'edit' ? Events.findOne( eventModal.event ) : {
+    if (eventModal) {
+      return eventModal.type === 'edit' ? Events.findOne(eventModal.event) : {
         start: eventModal.date,
         end: eventModal.date
       };
@@ -40,33 +49,33 @@ Template.addEditEventModal.helpers({
 });
 
 Template.addEditEventModal.events({
-  'submit form' ( event, template ) {
+  'submit form' (event, template) {
     event.preventDefault();
 
-    let eventModal = Session.get( 'eventModal' ),
-        submitType = eventModal.type === 'edit' ? 'editEvent' : 'addEvent',
-        eventItem  = {
-          title: template.find( '[name="title"]' ).value,
-          start: template.find( '[name="start"]' ).value,
-          end: template.find( '[name="end"]' ).value,
-          type: template.find( '[name="type"] option:selected' ).value,
-        };
+    let eventModal = Session.get('eventModal'),
+      submitType = eventModal.type === 'edit' ? 'editEvent' : 'addEvent',
+      eventItem = {
+        title: template.find('[name="title"]').value,
+        start: template.find('[name="start"]').value,
+        end: template.find('[name="end"]').value,
+        type: template.find('[name="type"] option:selected').value,
+      };
 
-    if ( submitType === 'editEvent' ) {
-      eventItem._id   = eventModal.event;
+    if (submitType === 'editEvent') {
+      eventItem._id = eventModal.event;
     }
 
-    Meteor.call( submitType, eventItem, ( error ) => {
-      if ( error ) {
-        Bert.alert( error.reason, 'danger' );
+    Meteor.call(submitType, eventItem, (error) => {
+      if (error) {
+        Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert( `Event ${ eventModal.type }ed!`, 'success' );
+        Bert.alert(`Event ${ eventModal.type }ed!`, 'success');
         closeModal();
       }
     });
   },
-  'click .delete-event' ( event, template ) {
-    let eventModal = Session.get( 'eventModal' );
+  'click .delete-event' (event, template) {
+    let eventModal = Session.get('eventModal');
     var eventId = eventModal.event;
     sweetAlert({
       title: "Are you sure?",
@@ -78,11 +87,11 @@ Template.addEditEventModal.events({
       closeOnConfirm: true,
       html: false
     }, function() {
-      Meteor.call( 'removeEvent', eventId, ( error ) => {
-        if ( error ) {
-          Bert.alert( error.reason, 'danger' );
+      Meteor.call('removeEvent', eventId, (error) => {
+        if (error) {
+          Bert.alert(error.reason, 'danger');
         } else {
-          Bert.alert( 'Work shift deleted!', 'success' );
+          Bert.alert('Work shift deleted!', 'success');
           closeModal();
         }
       });
